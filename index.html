@@ -3,165 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iman Firman - Developer Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS sama persis seperti sebelumnya - tidak ada perubahan */
-        /* [Semua CSS tetap sama, saya tidak copy ulang untuk hemat space] */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        } 
-
-        :root {
-            --bg-1: #0a0a0a;
-            --bg-2: #1a1a1a;
-            --bg-3: #252525;
-            --text-1: #f0f0f0;
-            --text-2: #b0b0b0;
-            --purple-1: #8b5cf6;
-            --purple-2: #a78bfa;
-            --purple-3: #c084fc;
-            --accent-glow: rgba(139, 92, 246, 0.3);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --border-purple: rgba(139, 92, 246, 0.2);
-            --shadow-purple: 0 20px 40px rgba(139, 92, 246, 0.15);
-        } 
-
-        [data-theme="light"] {
-            --bg-1: #f8fafc;
-            --bg-2: #f1f5f9;
-            --bg-3: #e2e8f0;
-            --text-1: #1e293b;
-            --text-2: #475569;
-            --glass-bg: rgba(0, 0, 0, 0.03);
-        } 
-
-        /* [Semua CSS lainnya sama persis] */
-    </style>
+    <title>HororID - Film Horor Indonesia</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header dan semua bagian sama persis sampai Projects -->
-
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                        </div>
-                        <h3>E-Commerce Platform</h3>
-                        <p>Platform belanja online lengkap dengan real-time chat, payment gateway, dan admin dashboard.</p>
-                        <div style="margin-top: 1.5rem;">
-                            <a href="https://your-ecommerce-demo.com" target="_blank" class="cta-secondary" style="font-size: 0.9rem; padding: 0.5rem 1.5rem;">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="https://github.com/imanfirman/ecommerce-platform" target="_blank" class="cta-secondary github-link" style="font-size: 0.9rem; padding: 0.5rem 1.5rem; margin-left: 0.5rem;">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-tasks"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Laravel</span>
-                            <span class="tag">MySQL</span>
-                        </div>
-                        <h3>Task Management App</h3>
-                        <p>Aplikasi manajemen tugas dengan drag & drop Kanban board, kolaborasi tim, dan notifikasi real-time.</p>
-                        <div style="margin-top: 1.5rem;">
-                            <a href="https://your-taskmanager-demo.com" target="_blank" class="cta-secondary" style="font-size: 0.9rem; padding: 0.5rem 1.5rem;">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="https://github.com/imanfirman/task-manager" target="_blank" class="cta-secondary github-link" style="font-size: 0.9rem; padding: 0.5rem 1.5rem; margin-left: 0.5rem;">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">Supabase</span>
-                            <span class="tag">Tailwind</span>
-                        </div>
-                        <h3>Analytics Dashboard</h3>
-                        <p>Dashboard analitik modern dengan chart interaktif, real-time data, dan custom themes.</p>
-                        <div style="margin-top: 1.5rem;">
-                            <a href="https://your-analytics-demo.com" target="_blank" class="cta-secondary" style="font-size: 0.9rem; padding: 0.5rem 1.5rem;">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="https://github.com/imanfirman/analytics-dashboard" target="_blank" class="cta-secondary github-link" style="font-size: 0.9rem; padding: 0.5rem 1.5rem; margin-left: 0.5rem;">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <header>
+        <h1>HororID</h1>
+        <p>Film Horor Indonesia Terseram</p>
+    </header>
+    
+    <main>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Cari film horor...">
         </div>
-    </section>
-
-    <!-- [Bagian Contact dan Footer sama persis] -->
-
-    <script>
-        (function() {
-            'use strict'; 
-
-            // [Semua JavaScript sama persis kecuali handler untuk GitHub links]
-
-            // Tambahan: Auto-open GitHub links in new tab (sudah otomatis via target="_blank")
-            function enhanceGithubLinks() {
-                document.querySelectorAll('.github-link').forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        // Pastikan link terbuka di tab baru
-                        if (!this.href.includes('github.com')) {
-                            console.warn('GitHub link tidak valid:', this.href);
-                            e.preventDefault();
-                            return false;
-                        }
-                        // Tambahan hover effect untuk feedback
-                        this.style.transform = 'translateY(-2px)';
-                        setTimeout(() => {
-                            this.style.transform = '';
-                        }, 150);
-                    });
-                });
-            }
-
-            // [Semua fungsi lainnya sama persis...]
-
-            function init() {
-                initTheme();
-                initAnimations();
-                typingEffect();
-                initForm();
-                initEvents();
-                enhanceGithubLinks(); // Tambahan ini
-                document.body.classList.add('loaded');
-            } 
-
-            document.addEventListener('DOMContentLoaded', init);
-        })();
-    </script>
+        
+        <div class="movies-grid" id="movies">
+            <!-- Film akan dimuat via JS -->
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
 </body>
 </html>
