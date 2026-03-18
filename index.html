@@ -3,24 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HororID - Film Horor Indonesia</title>
+    <title>HororID - Nonton Film Horor Indonesia</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Garis Merah Horor Background -->
+    <div class="blood-lines"></div>
+    
     <header>
-        <h1>HororID</h1>
-        <p>Film Horor Indonesia Terseram</p>
+        <h1>👻 HORORID 👻</h1>
+        <p>Film Horor Indonesia Terseram 2026</p>
     </header>
     
     <main>
-        <div class="search-bar">
-            <input type="text" id="search" placeholder="Cari film horor...">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="🔍 Cari film horor Indonesia...">
+            <div class="loading" id="loading"></div>
         </div>
         
-        <div class="movies-grid" id="movies">
-            <!-- Film akan dimuat via JS -->
+        <div class="category-tabs">
+            <button class="tab active" data-category="horror">HOROR</button>
+            <button class="tab" data-category="popular">POPULER</button>
+            <button class="tab" data-category="indonesia">INDONESIA</button>
+        </div>
+        
+        <div class="movies-grid" id="moviesGrid">
+            <!-- Movies akan dimuat otomatis via API -->
+        </div>
+        
+        <!-- No Result -->
+        <div class="no-result" id="noResult" style="display: none;">
+            <h2>😱 Film tidak ditemukan</h2>
+            <p>Coba cari film horor lain...</p>
         </div>
     </main>
+    
+    <!-- Video Player Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="videoPlayer" width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
     
     <script src="script.js"></script>
 </body>
