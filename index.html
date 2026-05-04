@@ -2,28 +2,150 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Fire - Masuk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>StreamVid — Iman Firman</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="login-form">
-            <img src="https://via.placeholder.com/150" alt="Free Fire Logo" class="logo">
-            <h2>Masuk ke Akun Free Fire</h2>
-            <form action="proses.php" method="POST">
-                <div class="input-group">
-                    <input type="text" name="username" placeholder="ID Pemain" required>
-                </div>
-                <div class="input-group">
-                    <input type="password" name="password" placeholder="Kata Sandi" required>
-                </div>
-                <button type="submit" class="login-btn">Masuk</button>
-            </form>
-            <div class="extras">
-                <a href="#">Lupa Kata Sandi?</a>
-            </div>
+
+<div class="dev-bar" id="devBar">
+    <span>🛠️ Mode Developer</span>
+    <span class="sep">|</span>
+    <span id="devUser">—</span>
+    <span class="sep">|</span>
+    <button class="btn btn-ghost" style="padding:0.22rem 0.55rem;font-size:0.7rem;" onclick="logoutDev()">Keluar</button>
+</div>
+
+<nav>
+    <div class="logo" onclick="filterCategory('all')">IMAN<span>MOVIE</span></div>
+    <div class="nav-search">
+        <span class="sico">🔍</span>
+        <input placeholder="Cari video..." id="searchInput" oninput="searchVideos(this.value)">
+    </div>
+    <div class="nav-right">
+        <button class="btn btn-ghost" id="loginBtn" onclick="openLogin()">🔐 Login</button>
+        <button class="btn btn-green" id="uploadBtn" style="display:none;" onclick="openUpload()">+ Upload</button>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+        <div class="hero-badge">🎬 Karya: Iman Firman</div>
+        <h1>NONTON<br>VIDEO <span>ONLINE</span></h1>
+        <p>Ribuan video pilihan — Horror, Drakor, Romantis, Bollywood, Kartun Anak, dan banyak lagi. Gratis tanpa batas.</p>
+        <div class="hero-actions">
+            <button class="btn-hero btn-hp" onclick="filterCategory('all')">▶ Mulai Nonton</button>
+            <button class="btn-hero btn-hs" onclick="filterCategory('sinema')">Sinema Spesial</button>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-card"><div class="stat-num" id="totalCount">12</div><div class="stat-label">Video</div></div>
+            <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Kategori</div></div>
+            <div class="stat-card"><div class="stat-num">HD</div><div class="stat-label">Kualitas</div></div>
         </div>
     </div>
+</div>
+
+<main>
+    <div class="cat-nav">
+        <button class="cat-btn active" onclick="filterCategory('all')" id="cat-all">🎬 Semua</button>
+        <button class="cat-btn" onclick="filterCategory('horror')" id="cat-horror">👻 Horror</button>
+        <button class="cat-btn" onclick="filterCategory('drakor')" id="cat-drakor">🎭 Drakor</button>
+        <button class="cat-btn" onclick="filterCategory('romantis')" id="cat-romantis">💕 Romantis</button>
+        <button class="cat-btn" onclick="filterCategory('sinema')" id="cat-sinema">🏆 Sinema Spesial</button>
+        <button class="cat-btn" onclick="kartun')" id="cat-kartun">🧸 Kartun Anak</button>
+        <button class="cat-btn" onclick="filterCategory('bollywood')" id="cat-bollywood">💃 Bollywood</button>
+    </div>
+    <div id="mainContent"></div>
+</main>
+
+<div class="modal-overlay" id="loginModal">
+    <div class="modal" style="max-width:400px;">
+        <div class="handle"></div>
+        <div class="modal-header">
+            <div class="modal-title">Login Developer</div>
+            <button class="modal-close" onclick="closeModal('loginModal')">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="login-top">
+                <div class="lb">IMAN MOVIE</div>
+                <p>Oleh: Iman Firman</p>
+            </div>
+            <div class="dev-note"><span>🔐 Hanya developer yang dapat menambah atau mengelola video.</span></div>
+            <div class="errmsg" id="loginError">Username atau password salah.</div>
+            <div class="fg">
+                <label class="fl">Username</label>
+                <input class="fi" id="loginUser" placeholder="Username" type="text">
+            </div>
+            <div class="fg">
+                <label class="fl">Password</label>
+                <input class="fi" id="loginPass" placeholder="Password" type="password" onkeydown="if(event.key==='Enter')doLogin()">
+            </div>
+            <button class="btn btn-red" style="width:100%;padding:0.65rem;" onclick="doLogin()">Masuk</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="uploadModal">
+    <div class="modal" style="max-width:500px;">
+        <div class="handle"></div>
+        <div class="modal-header">
+            <div class="modal-title">📤 Upload Video</div>
+            <button class="modal-close" onclick="closeModal('uploadModal')">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="fg">
+                <label class="fl">Judul Video *</label>
+                <input class="fi" id="upTitle" placeholder="Masukkan judul video...">
+            </div>
+            <div class="fg">
+                <label class="fl">Kategori *</label>
+                <select class="fi" id="upCat">
+                    <option value="">-- Pilih Kategori --</option>
+                    <option value="horror">👻 Horror</option>
+                    <option value="drakor">🎭 Drakor</option>
+                    <option value="romantis">💕 Romantis</option>
+                    <option value="sinema">🏆 Sinema Spesial</option>
+                    <option value="kartun">🧸 Kartun Anak</option>
+                    <option value="bollywood">💃 Bollywood</option>
+                </select>
+            </div>
+            <div class="fg">
+                <label class="fl">File Video *</label>
+                <div class="file-drop" id="fileDrop" onclick="document.getElementById('fileInput').click()" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event)">
+                    <div class="fdi">🎬</div>
+                    <p><strong>Pilih file</strong> atau seret ke sini</p>
+                </div>
+                <div class="file-sel" id="fileSel"><span>✅</span><span id="fileSelName"></span></div>
+                <input type="file" id="fileInput" accept="video/*" style="display:none" onchange="onFileSelect(this)">
+                <div class="uprog" id="uprog"><div class="ubar" id="ubar"></div></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal('uploadModal')">Batal</button>
+            <button class="btn btn-red" onclick="submitUpload()">Upload</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="playerModal">
+    <div class="modal wide">
+        <div class="handle"></div>
+        <div class="modal-header">
+            <div class="modal-title" id="playerTitle">Judul Video</div>
+            <button class="modal-close" onclick="closePlayer()">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="player-wrap" id="playerWrap"></div>
+            <div class="ptitle" id="ptitleFull"></div>
+            <div class="pmeta" id="pmeta"></div>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
